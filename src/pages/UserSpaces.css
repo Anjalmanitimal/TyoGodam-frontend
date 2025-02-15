@@ -1,0 +1,57 @@
+.user-spaces {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+  }
+  
+  .user-spaces h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 20px;
+  }
+  
+  .space-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .space-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .space-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .space-card p {
+    font-size: 14px;
+  }
+  
+  .view-btn {
+    background-color: #3e8e41;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .view-btn:hover {
+    background-color: #2e7031;
+  }
+  

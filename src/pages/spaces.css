@@ -1,0 +1,113 @@
+/* General Container */
+.spaces-container {
+    min-height: 100vh; /* Full viewport height */
+    background: url("../assets/bg2.jpg") no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: rgb(21, 136, 193); /* Ensure text is visible */
+  }
+
+  .spaces-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    z-index: -1;
+  }
+  
+ /* Center content */
+.hero-section {
+    text-align: center;
+    padding: 100px 20px;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .hero-section p {
+    font-size: 1.2rem;
+  }
+  
+  /* Featured Spaces */
+  .featured-spaces {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .spaces-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .space-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+  }
+  
+  .space-card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .space-card h3 {
+    margin: 10px 0;
+  }
+  
+  .space-card p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Blogs Section */
+  .blogs-section {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .blog-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .blog-card {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    width: 280px;
+  }
+  
+  .blog-card h3 {
+    margin-bottom: 10px;
+  }
+  
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .btn:hover {
+    background: #0056b3;
+  }
+  

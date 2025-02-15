@@ -1,0 +1,102 @@
+/* Header Container */
+.header {
+  display: flex;
+  justify-content: space-between; /* Align logo on the left and nav links on the right */
+  align-items: center; /* Vertically center all elements */
+  height: 60px; /* Fixed height */
+  padding: 0 20px; /* Add some horizontal padding */
+  background-color: #CD9F6A;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Reset margin and padding for all elements inside the header */
+.header * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Consistent box model */
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center; /* Align the logo content vertically */
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo img {
+  max-height: 50px; /* Adjust to fit inside the header */
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem; /* Space between navigation links */
+  justify-content: flex-end; /* Ensure nav links are aligned to the right */
+  flex-grow: 1; /* Allow nav links to take up the remaining space */
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  color: #441717;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Mobile Menu Icon */
+.mobile-menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: row; /* Keep elements in a row on small screens */
+    padding: 0 10px; /* Reduce padding */
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #CD9F6A;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+}
+
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%;
+}

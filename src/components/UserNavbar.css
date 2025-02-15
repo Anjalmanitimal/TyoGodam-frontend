@@ -1,0 +1,81 @@
+/* UserNavbar.css */
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #CD9F6A;
+    color: white;
+  }
+  
+  .logo {
+    flex: 1;
+  }
+  
+  .logo-img {
+    width: 50px;
+    height: auto;
+  }
+  
+  .user-nav-links ul {
+    display: flex;
+    list-style-type: none;
+  }
+  
+  .user-nav-links li {
+    margin: 0 20px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .nav-link:hover {
+    color: #f2a900; /* Highlight on hover */
+  }
+  
+  .user-mobile-menu {
+    display: none;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .logout-btn {
+    background-color: #f2a900;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+  }
+  
+  .logout-btn:hover {
+    background-color: #cc8a00;
+  }
+  
+  @media (max-width: 768px) {
+    .user-nav-links {
+      display: none;
+    }
+  
+    .user-mobile-menu {
+      display: block;
+    }
+  
+    .menu-icon {
+      font-size: 30px;
+      color: white;
+    }
+  }
+  
