@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "axios"; // Import Axios
 import "./AddSpaceModal.css";
 
-const AddSpaceModal = ({ isOpen, onClose, onSave }) => {
+const AddSpaceModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
     location: "",
-    capacity: "",
+    size: "",
     price: "",
   });
 
-  if (!isOpen) return null; // If modal is not open, return nothing
+  if (!isOpen) return null;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,26 +18,28 @@ const AddSpaceModal = ({ isOpen, onClose, onSave }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const token = localStorage.getItem("token"); // Get token from localStorage
-
+      const token = localStorage.getItem("token");
+      console.log("Sending token:", token);  // Ensure token is being retrieved correctly
+  
       const response = await axios.post(
-        "http://localhost:5000/api/spaces/create",  // Your backend URL
+        "http://localhost:5000/api/spaces/create",
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`,  // Send token in header
+            Authorization: `Bearer ${token}`, // Send token for authentication
+            "Content-Type": "application/json",
           },
         }
       );
-
-      onSave(response.data);  // Send the newly created space data back to the parent
-      onClose();  // Close the modal after saving
+      console.log("Space added:", response.data);
+      onClose(); // Close modal after success
+      window.location.reload(); // Refresh to show the new space in UserSpaces
     } catch (error) {
-      console.error("Error adding space:", error);
+      console.error("Error adding space:", error.response?.data || error);
     }
   };
+  
 
   return (
     <div className="modal-overlay">
@@ -62,11 +64,11 @@ const AddSpaceModal = ({ isOpen, onClose, onSave }) => {
             required
           />
 
-          <label>Capacity:</label>
+          <label>Size (sq ft):</label>
           <input
             type="number"
-            name="capacity"
-            value={formData.capacity}
+            name="size"
+            value={formData.size}
             onChange={handleChange}
             required
           />

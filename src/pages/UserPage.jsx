@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios"; // Ensure Axios is installed
 import "./UserPage.css";
-
-// Mock data for spaces (you can replace this with real API data)
-const mockSpaces = [
-  { id: 1, name: "Warehouse A", location: "New York", size: "1000 sq ft", price: "$2000" },
-  { id: 2, name: "Storage B", location: "San Francisco", size: "800 sq ft", price: "$1500" },
-  { id: 3, name: "Space C", location: "Los Angeles", size: "1200 sq ft", price: "$2500" },
-];
 
 const UserPage = () => {
   const [spaces, setSpaces] = useState([]);
 
-  // Simulate fetching data (replace with an API call)
+  // Fetch spaces from the backend
   useEffect(() => {
-    setSpaces(mockSpaces);
+    const fetchSpaces = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/spaces");
+        setSpaces(response.data); // ✅ Set data from backend
+      } catch (error) {
+        console.error("Error fetching spaces:", error);
+      }
+    };
+
+    fetchSpaces(); // Fetch data when component mounts
   }, []);
 
   return (
@@ -26,18 +29,26 @@ const UserPage = () => {
 
       {/* Space Listing */}
       <div className="space-listing">
-        {spaces.map((space) => (
-          <div key={space.id} className="space-card">
-            <img src={`https://via.placeholder.com/300x200?text=${space.name}`} alt={space.name} className="space-image" />
-            <div className="space-info">
-              <h3>{space.name}</h3>
-              <p>{space.location}</p>
-              <p className="size">Size: {space.size}</p>
-              <p className="price">{space.price}/month</p>
-              <button className="view-btn">View Details</button>
+        {spaces.length > 0 ? (
+          spaces.map((space) => (
+            <div key={space.id} className="space-card">
+              <img
+                src={`https://via.placeholder.com/300x200?text=${space.name}`}
+                alt={space.name}
+                className="space-image"
+              />
+              <div className="space-info">
+                <h3>{space.name}</h3>
+                <p>{space.location}</p>
+                <p className="size">Size: {space.size} sq ft</p>
+                <p className="price">${space.price}/month</p>
+                <button className="view-btn">View Details</button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No spaces available. Please check back later!</p>
+        )}
       </div>
     </div>
   );
