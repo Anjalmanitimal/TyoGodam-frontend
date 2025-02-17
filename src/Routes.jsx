@@ -3,38 +3,44 @@ import App from "./App";
 import Register from "./pages/Register";
 import Spaces from "./pages/Spaces";
 import Login from "./pages/Login";
-import UserLayout from "./pages/UserLayout"; // Layout with navbar
-import UserPage from "./pages/UserPage"; // Dashboard
-import UserSpaces from "./pages/UserSpaces"; // Space listing
-import Notifications from "./pages/Notifications"; // Notifications page
-import SpaceOwnerLayout from "./pages/SpaceOwnerLayout"; // NEW Space Owner Layout
-import SpaceOwnerPage from "./pages/SpaceOwnerPage"; // NEW Space Owner Dashboard
+import UserLayout from "./pages/UserLayout";
+import UserPage from "./pages/UserPage";
+import UserSpaces from "./pages/UserSpaces";
+import Notifications from "./pages/Notifications";
+import SpaceOwnerLayout from "./pages/SpaceOwnerLayout";
+import SpaceOwnerPage from "./pages/SpaceOwnerPage";
+import ManageSpaces from "./pages/ManageSpaces"; // Space Owner manage spaces page
+// import Bookings from "./pages/Bookings";         // Space Owner bookings page
+// import Profile from "./pages/Profile";           // Space Owner profile page
 
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        {/* ✅ Public Routes (Before Login) */}
+        {/* Public Routes */}
         <Route path="/" element={<App />}>
           <Route index element={<Spaces />} />
           <Route path="register" element={<Register />} />
-          <Route path="spaces" element={<Spaces />} />
           <Route path="login" element={<Login />} />
+          <Route path="spaces" element={<Spaces />} />
         </Route>
 
-        {/* ✅ User Routes (After Login) */}
+        {/* User Interface for regular users */}
         <Route path="/user" element={<UserLayout />}>
-          <Route index element={<UserPage />} /> {/* ✅ User Dashboard */}
+          <Route index element={<UserPage />} />
           <Route path="spaces" element={<UserSpaces />} />
           <Route path="notifications" element={<Notifications />} />
         </Route>
 
-        {/* ✅ Space Owner Routes (After Login) */}
+        {/* Space Owner Interface */}
         <Route path="/spaceowner" element={<SpaceOwnerLayout />}>
-          <Route index element={<SpaceOwnerPage />} /> {/* ✅ Space Owner Dashboard */}
+          <Route index element={<SpaceOwnerPage />} />
+          <Route path="manage" element={<ManageSpaces />} />
+          {/* <Route path="bookings" element={<Bookings />} />
+          <Route path="profile" element={<Profile />} /> */}
         </Route>
 
-        {/* ✅ Catch-all Route (Handles 404 Errors) */}
+        {/* Catch-all Route */}
         <Route path="*" element={<h2>404 - Page Not Found</h2>} />
       </Routes>
     </Router>
