@@ -9,23 +9,53 @@ const UserSpaces = () => {
   useEffect(() => {
     const fetchSpaces = async () => {
       try {
-        const token = localStorage.getItem("token"); // Get token from local storage
+        const token = localStorage.getItem("token");
         const response = await axios.get("http://localhost:5000/spaces", {
-          headers: { Authorization: `Bearer ${token}` }, // Send token in headers
+          headers: { Authorization: `Bearer ${token}` },
         });
         setSpaces(response.data);
       } catch (error) {
         console.error("Error fetching spaces:", error);
       }
     };
-  
+
     fetchSpaces();
   }, []);
 
   const handleSearch = (e) => {
-    const value = e.target.value;
-    setSearchSize(value);
+    setSearchSize(e.target.value);
   };
+
+  const handleBooking = async (spaceId) => {
+    try {
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId"); // ✅ Retrieve user ID from local storage
+  
+      if (!userId) {
+        console.error("User ID not found. Ensure the user is logged in.");
+        alert("Please log in before booking a space.");
+        return;
+      }
+  
+      console.log("Booking request with:", { spaceId, userId }); // ✅ Debugging log
+  
+      const response = await axios.post(
+        "http://localhost:5000/bookings",
+        { spaceId, userId: parseInt(userId) }, // ✅ Ensure userId is an integer
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+  
+      if (response.status === 201) {
+        alert("Booking successful!");
+      } else {
+        alert("Booking failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error booking space:", error);
+      alert("Error booking space. Try again later.");
+    }
+  };
+  
 
   return (
     <div className="user-spaces">
@@ -47,6 +77,9 @@ const UserSpaces = () => {
               <p>Size: {space.size} sq ft</p>
               <p>Price: ${space.price}</p>
               <button className="view-btn">View Details</button>
+              <button className="book-btn" onClick={() => handleBooking(space.id)}>
+                Book Space
+              </button>
             </div>
           ))}
       </div>

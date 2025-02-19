@@ -87,7 +87,7 @@
     font-weight: bold;
   }
   
-  .view-btn {
+  .book-btn {
     background-color: #3498db;
     color: white;
     padding: 10px 20px;
@@ -98,8 +98,8 @@
     transition: background-color 0.3s ease;
   }
   
-  .view-btn:hover {
-    background-color: #2980b9;
+  .book-btn:hover {
+    background-color: #b92e29;
   }
   
   /* Search Bar */
@@ -155,7 +155,7 @@
       font-size: 20px;
     }
   
-    .view-btn {
+    .book-btn {
       width: 100%;
       text-align: center;
     }

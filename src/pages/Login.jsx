@@ -32,16 +32,24 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         console.log("Login successful:", data);
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("role", data.role); // Store role in localStorage
+        
+        // Ensure the user object exists
+        if (data.user) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("role", data.role);
+          localStorage.setItem("userId", data.user.id);  // Store user ID safely
   
-        window.dispatchEvent(new Event("storage")); // Trigger storage event
+          window.dispatchEvent(new Event("storage")); // Trigger storage event
   
-        // ✅ Redirect based on role
-        if (data.role === "User") {
-          navigate("/user"); // ✅ Redirect to User Dashboard
-        } else if (data.role === "Space Owner") {
-          window.location.href = "/spaceowner"; // ✅ Redirect to Space Owner Dashboard
+          // ✅ Redirect based on role
+          if (data.role === "User") {
+            navigate("/user"); // ✅ Redirect to User Dashboard
+          } else if (data.role === "Space Owner") {
+            window.location.href = "/spaceowner"; // ✅ Redirect to Space Owner Dashboard
+          }
+        } else {
+          console.error("No user data in response:", data);
+          alert("Login failed. User data is missing.");
         }
       } else {
         console.error("Login failed:", data.message);
@@ -51,6 +59,8 @@ const Login = () => {
       console.error("Error logging in:", error);
     }
   };
+  
+  
   
   
   

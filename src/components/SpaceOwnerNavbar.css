@@ -1,58 +1,64 @@
 /* SpaceOwnerNavbar.css */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: #2f2f2f;
-    color: white;
-    padding: 15px 20px;
-    align-items: center;
-  }
-  
-  .navbar-left {
-    flex: 1;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .navbar-right {
-    flex: 2;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .navbar-links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-  }
-  
-  .navbar-links li {
-    margin-right: 20px;
-  }
-  
-  .navbar-links li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-  }
-  
-  .navbar-links li a:hover {
-    color: #f39c12;
-  }
-  
-  .logout-btn {
-    background-color: #e74c3c;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .logout-btn:hover {
-    background-color: #c0392b;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  background-color: #2f2f2f;
+  color: white;
+  padding: 10px 20px; /* Adjust padding */
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box; /* Ensure proper box model */
+  height: auto; /* Ensure the navbar doesn't stretch too tall */
+  min-height: 60px; /* Optional: to limit the navbar height */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 20px; /* Adjust if necessary */
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.navbar-links li {
+  display: inline-block;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+.navbar-links li a:hover {
+  color: #f39c12;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}

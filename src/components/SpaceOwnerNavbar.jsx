@@ -13,7 +13,7 @@ const SpaceOwnerNavbar = () => {
         <ul className="navbar-links">
           <li><Link to="/spaceowner">Dashboard</Link></li>
           <li><Link to="/spaceowner/manage">Manage Spaces</Link></li>
-          <li><Link to="/spaceowner/bookings">Bookings</Link></li>
+          <li><Link to="/spaceowner/bookings">Owner Bookings</Link></li>
           <li><Link to="/spaceowner/profile">Profile</Link></li>
           <li><button className="logout-btn">Logout</button></li>
         </ul>

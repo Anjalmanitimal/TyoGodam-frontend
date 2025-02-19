@@ -10,6 +10,7 @@ import Notifications from "./pages/Notifications";
 import SpaceOwnerLayout from "./pages/SpaceOwnerLayout";
 import SpaceOwnerPage from "./pages/SpaceOwnerPage";
 import ManageSpaces from "./pages/ManageSpaces"; // Space Owner manage spaces page
+import OwnerBookings from "./pages/OwnerBookings";
 // import Bookings from "./pages/Bookings";         // Space Owner bookings page
 // import Profile from "./pages/Profile";           // Space Owner profile page
 
@@ -36,6 +37,7 @@ const AppRoutes = () => {
         <Route path="/spaceowner" element={<SpaceOwnerLayout />}>
           <Route index element={<SpaceOwnerPage />} />
           <Route path="manage" element={<ManageSpaces />} />
+          <Route path="/spaceowner/bookings" element={<OwnerBookings />} /> {/* Add this line */}
           {/* <Route path="bookings" element={<Bookings />} />
           <Route path="profile" element={<Profile />} /> */}
         </Route>

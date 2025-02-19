@@ -1,0 +1,84 @@
+/* OwnerBookings.css */
+
+/* Body Styles for OwnerBookings Only */
+.owner-bookings-body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    padding: 20px;
+    margin: 0; /* Prevent any global margin affecting layout */
+  }
+  
+  /* Heading */
+  .owner-bookings-body h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Booking List */
+  .owner-bookings-body ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .owner-bookings-body li {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .owner-bookings-body li:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Booking Information */
+  .owner-bookings-body .booking-info {
+    font-weight: 600;
+    color: #2980b9;
+  }
+  
+  .owner-bookings-body .booking-details {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+  }
+  
+  .owner-bookings-body .booking-date {
+    font-size: 0.9rem;
+    color: #95a5a6;
+    font-style: italic;
+  }
+  
+  /* No Bookings Message */
+  .owner-bookings-body p {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #7f8c8d;
+  }
+  
+  /* Small Adjustments for Responsiveness */
+  @media (max-width: 768px) {
+    .owner-bookings-body h2 {
+      font-size: 1.8rem;
+    }
+  
+    .owner-bookings-body li {
+      padding: 12px;
+    }
+  
+    .owner-bookings-body li p {
+      font-size: 0.95rem;
+    }
+  }
+  
