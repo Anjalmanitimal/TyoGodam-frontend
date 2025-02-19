@@ -5,25 +5,24 @@ const SpaceListing = () => {
   const [search, setSearch] = useState("");
   const [spaces, setSpaces] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
 
   // Fetch spaces from the backend
-  useEffect(() => {
-    const fetchSpaces = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get("http://localhost:5000/spaces");
-        setSpaces(response.data);
-      } catch (err) {
-        console.error("Error fetching spaces:", err);
-        setError("Failed to load spaces. Try again later.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSpaces();
-  }, []);
+  const fetchSpaces = async () => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem("token");
+      const response = await axios.get("http://localhost:5000/spaces", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setSpaces(response.data);
+    } catch (err) {
+      console.error("Error fetching spaces:", err);
+      setError("Failed to load spaces. Try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Filter spaces dynamically based on search input
   const filteredSpaces = spaces.filter((space) =>

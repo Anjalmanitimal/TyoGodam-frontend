@@ -6,17 +6,19 @@ const UserSpaces = () => {
   const [spaces, setSpaces] = useState([]);
   const [searchSize, setSearchSize] = useState("");
 
-  // Fetch spaces from the backend when the component loads
   useEffect(() => {
     const fetchSpaces = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/spaces");
+        const token = localStorage.getItem("token"); // Get token from local storage
+        const response = await axios.get("http://localhost:5000/spaces", {
+          headers: { Authorization: `Bearer ${token}` }, // Send token in headers
+        });
         setSpaces(response.data);
       } catch (error) {
         console.error("Error fetching spaces:", error);
       }
     };
-
+  
     fetchSpaces();
   }, []);
 
