@@ -1,34 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const SpaceListing = () => {
   const [search, setSearch] = useState("");
+  const [spaces, setSpaces] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
+  // Fetch spaces from the backend
+  useEffect(() => {
+    const fetchSpaces = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get("http://localhost:5000/spaces");
+        setSpaces(response.data);
+      } catch (err) {
+        console.error("Error fetching spaces:", err);
+        setError("Failed to load spaces. Try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSpaces();
+  }, []);
+
+  // Filter spaces dynamically based on search input
+  const filteredSpaces = spaces.filter((space) =>
+    space.size.toString().includes(search)
+  );
 
   return (
     <div className="space-listing-page">
       <h1>Space Listings</h1>
+
       <div className="search-bar">
         <input
           type="number"
           placeholder="Search by sq ft"
           value={search}
-          onChange={handleSearch}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 
-      <div className="space-results">
-        {/* Filtered spaces */}
-        <h2>Available Spaces</h2>
-        <ul>
-          {/* This would be dynamic based on search */}
-          <li>Warehouse A - 1000 sq ft</li>
-          <li>Storage B - 800 sq ft</li>
-          <li>Space C - 1200 sq ft</li>
-        </ul>
-      </div>
+      {loading ? (
+        <p>Loading spaces...</p>
+      ) : error ? (
+        <p className="error-message">{error}</p>
+      ) : filteredSpaces.length > 0 ? (
+        <div className="space-results">
+          <h2>Available Spaces</h2>
+          <ul>
+            {filteredSpaces.map((space) => (
+              <li key={space.id}>
+                {space.name} - {space.size} sq ft
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p>No spaces found matching your search.</p>
+      )}
     </div>
   );
 };

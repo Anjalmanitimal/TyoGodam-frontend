@@ -4,14 +4,14 @@ import "./UserPage.css";
 
 const UserPage = () => {
   const [spaces, setSpaces] = useState([]);
-  const [loading, setLoading] = useState(true); // Track loading state
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchSpaces = async () => {
       try {
-        setLoading(true); // Start loading
-        const token = localStorage.getItem("token"); // Ensure auth if needed
+        setLoading(true);
+        const token = localStorage.getItem("token");
         const response = await axios.get("http://localhost:5000/spaces", {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -20,14 +20,14 @@ const UserPage = () => {
         console.error("Error fetching spaces:", err);
         setError("Failed to load spaces. Try again later.");
       } finally {
-        setLoading(false); // Stop loading
+        setLoading(false);
       }
     };
 
     fetchSpaces();
-    const interval = setInterval(fetchSpaces, 5000); // Refresh every 5 sec
+    const interval = setInterval(fetchSpaces, 5000);
 
-    return () => clearInterval(interval); // Cleanup
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -37,7 +37,6 @@ const UserPage = () => {
         <p>Browse and find the perfect space to meet your storage needs.</p>
       </div>
 
-      {/* Handle loading state */}
       {loading ? (
         <p>Loading spaces...</p>
       ) : error ? (
@@ -45,21 +44,21 @@ const UserPage = () => {
       ) : spaces.length > 0 ? (
         <div className="space-listing">
           {spaces.map((space) => (
-            <div key={space.id} className="space-card">
-              <img
-                src={`https://via.placeholder.com/300x200?text=${space.name}`}
-                alt={space.name}
-                className="space-image"
-              />
-              <div className="space-info">
-                <h3>{space.name}</h3>
-                <p>{space.location}</p>
-                <p className="size">Size: {space.size} sq ft</p>
-                <p className="price">${space.price}/month</p>
-                <button className="view-btn">View Details</button>
-              </div>
-            </div>
-          ))}
+  <div key={space.id} className="space-card">
+   <img
+  src={space.imageUrl ? `http://localhost:5000${space.imageUrl}` : "https://via.placeholder.com/300x200?text=No+Image"}
+  alt={space.name}
+  className="space-image"
+/>
+    <div className="space-info">
+      <h3>{space.name}</h3>
+      <p>{space.location}</p>
+      <p className="size">Size: {space.size} sq ft</p>
+      <p className="price">${space.price}/month</p>
+      <button className="view-btn">View Details</button>
+    </div>
+  </div>
+))}
         </div>
       ) : (
         <p>No spaces available. Please check back later!</p>
