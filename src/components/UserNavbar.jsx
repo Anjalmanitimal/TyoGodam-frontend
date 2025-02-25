@@ -42,7 +42,7 @@ const UserNavbar = () => {
 
       {/* Profile and Logout */}
       <div className="user-profile">
-        <img src="profile-pic.png" alt="Profile" className="profile-img" />
+        {/* <img src="profile-pic.png" alt="Profile" className="profile-img" /> */}
         <button className="logout-btn" onClick={handleLogout}>Logout</button> {/* Call handleLogout */}
       </div>
     </header>

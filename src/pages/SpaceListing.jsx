@@ -73,6 +73,7 @@ const SpaceListing = () => {
             {spaces.map((space) => (
               <li key={space.id}>
                 {space.name} - {space.size} sq ft
+                
                 <button className="book-btn" onClick={() => handleBooking(space.id)}>
                   Book Space
                 </button>

@@ -62,6 +62,7 @@ const UserPage = () => {
                 <p>{space.location}</p>
                 <p className="size">Size: {space.size} sq ft</p>
                 <p className="price">${space.price}/month</p>
+                
                 <button className="book-btn" onClick={() => handleBooking(space.id)}>
                   Book Space
                 </button>

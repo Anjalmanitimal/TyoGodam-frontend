@@ -76,7 +76,7 @@ const UserSpaces = () => {
               <p>Location: {space.location}</p>
               <p>Size: {space.size} sq ft</p>
               <p>Price: ${space.price}</p>
-              <button className="view-btn">View Details</button>
+              
               <button className="book-btn" onClick={() => handleBooking(space.id)}>
                 Book Space
               </button>

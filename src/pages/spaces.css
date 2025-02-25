@@ -1,13 +1,13 @@
 /* General Container */
 .spaces-container {
     min-height: 100vh; /* Full viewport height */
-    background: url("../assets/bg2.jpg") no-repeat center center/cover;
+    background: url("../assets/backgroundmain.jpg") no-repeat center center/cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    color: rgb(21, 136, 193); /* Ensure text is visible */
+    color: rgb(235, 164, 20); /* Ensure text is visible */
   }
 
   .spaces-container::before {
